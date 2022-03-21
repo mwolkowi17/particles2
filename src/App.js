@@ -1,6 +1,7 @@
-import ReactDOM from 'react-dom'
+
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+import {SpaceDust} from './SpaceDust'
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -19,6 +20,7 @@ function Box(props) {
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
+      
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
     </mesh>
@@ -30,7 +32,8 @@ export default function App(props){
   <Canvas>
     <ambientLight />
     <pointLight position={[10, 10, 10]} />
-    <Box position={[-1.2, 0, 0]} />
-    <Box position={[1.2, 0, 0]} />
+    <SpaceDust count={10000} />
+    {/*<Box position={[-1.2, 0, 0]} />
+    <Box position={[1.2, 0, 0]} />*/}
   </Canvas>)
 }
